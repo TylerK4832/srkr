@@ -1,0 +1,55 @@
+.navbar-main{
+  background-color: #300c63;
+}
+
+.navbar-light .navbar-nav .nav-link{
+  color: #3ede69;
+  font-size: 28px;
+  font-family: fresno, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 2px;
+}
+
+.navbar-toggler{
+  background-color: #3ede69;
+}
+
+.container-fluid{
+  margin: 0px;
+  padding: 0px;
+  max-width: 100%;
+}
+
+body{
+  background-color: #300c63;
+}
+
+.dropdown-menu{
+  color: #3ede69;
+  font-size: 28px;
+  font-family: fresno, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 2px;
+  background-color: #300c63;
+}
+
+.dropdown-item: hover{
+  color: #3ede69;
+}
+
+.homepage-header{
+  color: #3ede69;
+  font-size: 40px;
+  font-family: fresno, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 2px;
+  font-style: italic;
+}
+
+.homepage-text{
+  font-size: 24px;
+  color: white;
+}
