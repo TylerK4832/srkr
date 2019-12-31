@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Rent
+{% endblock %}
+
+
+{% block main %}
+
+<h1 class="rent-header">Rent</h1>
+
+<div>
+  <div class="container mb-5">
+    <div class="row">
+      {% for i in range(length) %}
+        <div class="col-xs-12 col-md-2 col-lg-4">
+          <div class="card m-2" style="width: 20rem;">
+            <div class="card-body">
+              <h5 class="card-title">{{names[i]}}</h5>
+              <p class="card-text">{{descriptions[i]}}</p>
+              <div><span class="price-label">Price/hr: <span class="green-text">${{costs_hour[i]}}</span></span></div>
+              <div><span class="price-label">Price/day: <span class="green-text">${{costs_day[i]}}</span></span></div>
+              <a href="#" class="btn btn-primary add-to-cart mt-4">Add to Cart</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}
