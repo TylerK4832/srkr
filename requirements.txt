@@ -1,4 +1,4 @@
 Flask
 gunicorn
 requests
-sqlite3
+pysqlite
