@@ -7,14 +7,33 @@
 
 {% block main %}
 
-<h1 class="rent-header">Rent</h1>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1 class="rent-header">Rent</h1>
+    </div>
+    <div class="col">
+      <div class="dropdown float-left">
+        <button class="btn dropdown-btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Select Type
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="/rent/kayak/">Kayaks</a>
+          <a class="dropdown-item" href="/rent/canoe/">Canoes</a>
+          <a class="dropdown-item" href="/rent/paddleboard/">Paddleboards</a>
+          <a class="dropdown-item" href="/rent/">All</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div>
   <div class="container mb-5">
     <div class="row">
       {% for i in range(length) %}
-        <div class="col-xs-12 col-md-2 col-lg-4">
-          <div class="card m-2" style="width: 20rem;">
+        <div class="col-xs-12 col-md-6 col-lg-4">
+          <div class="card m-2">
             <div class="card-body">
               <h5 class="card-title">{{names[i]}}</h5>
               <p class="card-text">{{descriptions[i]}}</p>
