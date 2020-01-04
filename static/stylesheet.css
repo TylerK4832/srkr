@@ -107,7 +107,7 @@ footer {
   border-radius: 0;
   color: white;
   background-color: #3ede69;
-  font-size: 24px;
+  font-size: 20px;
   font-family: fresno, sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -139,4 +139,38 @@ footer {
   letter-spacing: 2px;
   background-color: #3ede69;
   border-radius: 0;
+}
+
+.quantity-selector {
+  color: white;
+  font-size: 18px;
+  font-family: fresno, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 2px;
+  background-color: #3ede69;
+  border-radius: 0;
+  border: none;
+  padding: 4px;
+}
+
+.big-link-button {
+  color: white;
+  font-size: 32px;
+  font-family: fresno, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 2px;
+  background-color: #3ede69;
+  border-radius: 0;
+  border: none;
+  padding: 4px;
+}
+
+.checkout {
+  height: 100%;
+}
+
+.form-control {
+  max-width: 75%;
 }

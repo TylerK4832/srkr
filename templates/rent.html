@@ -39,7 +39,25 @@
               <p class="card-text">{{descriptions[i]}}</p>
               <div><span class="price-label">Price/hr: <span class="green-text">${{costs_hour[i]}}</span></span></div>
               <div><span class="price-label">Price/day: <span class="green-text">${{costs_day[i]}}</span></span></div>
-              <a href="#" class="btn btn-primary add-to-cart mt-4">Add to Cart</a>
+              <form action="/cart" method="POST">
+                <div class="container">
+                  <div class="row">
+                    <div class="col">
+                      <button class="btn btn-primary add-to-cart mt-4" type="submit" name="item" value={{ids[i]}}>Add to Cart</button>
+                    </div>
+                    <div class="col">
+                      <select class="form-control quantity-selector mt-4" name="quantity">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </form>
             </div>
           </div>
         </div>

@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Rent
+{% endblock %}
+
+
+{% block main %}
+
+<div class="checkout">
+  <h1 class="rent-header">Checkout</h1>
+</div>
+<form>
+  <div class="form-group">
+    <label for="firstname">Name</label>
+    <input type="text" class="form-control my-3" id="firstname" placeholder="First">
+    <input type="text" class="form-control my-3" id="lastname" placeholder="Last">
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" class="form-control" id="email" placeholder="example@example.com">
+  </div>
+  <div class="form-group">
+    <label for="paymenttype">Payment Type</label>
+    <select class="form-control" id="paymenttype">
+      <option>Credit/ Debit</option>
+      <option>Paypal</option>
+    </select>
+  </div>
+</form>
+
+{% endblock %}
