@@ -2,7 +2,7 @@
 import os
 import sqlite3
 
-from flask import Flask, render_template, request, make_response
+from flask import Flask, render_template, request, make_response, redirect
 
 app = Flask(__name__)
 
@@ -46,51 +46,52 @@ def rent(type=1):
             length+=1
     return render_template("rent.html", names=names, descriptions=descriptions, types=types, costs_hour=costs_hour, costs_day=costs_day, length=length, ids=ids)
 
-cart_cookie_counter = 1
-
 @app.route("/cart", methods=["GET", "POST"])
 def cart():
     if request.method=="GET":
-        connection=sqlite3.connect("rentals.db")
-        cursor=connection.cursor()
-        cursor.execute("SELECT * FROM rentals")
-        rentals=cursor.fetchall()
-        names=[]
-        costs_hour=[]
-        costs_day=[]
-        ids=[]
-        for i in range(len(rentals)):
-            names.append(rentals[i][0])
-            costs_hour.append(rentals[i][3])
-            costs_day.append(rentals[i][4])
-            ids.append(rentals[i][5])
-        item_list=[]
-        name_list=[]
-        quantity_list=[]
-        cost_hour_list=[]
-        cost_day_list=[]
-        cookie=str(request.cookies.get('cart_items'))
-        the_list=cookie.split()
-        for i in range(len(the_list)):
-            item_list.append(the_list[i][0:3])
-            quantity_list.append(the_list[i][4:])
-        length=len(the_list)
-        for i in range(len(the_list)):
-            name_list.append(names[ids.index(int(item_list[i]))])
-            cost_hour_list.append(costs_hour[ids.index(int(item_list[i]))])
-            cost_day_list.append(costs_day[ids.index(int(item_list[i]))])
-        return render_template("cart.html", name_list=name_list, cost_hour_list=cost_hour_list, cost_day_list=cost_day_list, quantity_list=quantity_list, length=length)
+        if 'cart_items' in request.cookies:
+            connection=sqlite3.connect("rentals.db")
+            cursor=connection.cursor()
+            cursor.execute("SELECT * FROM rentals")
+            rentals=cursor.fetchall()
+            names=[]
+            costs_hour=[]
+            costs_day=[]
+            ids=[]
+            for i in range(len(rentals)):
+                names.append(rentals[i][0])
+                costs_hour.append(rentals[i][3])
+                costs_day.append(rentals[i][4])
+                ids.append(rentals[i][5])
+            item_list=[]
+            name_list=[]
+            quantity_list=[]
+            cost_hour_list=[]
+            cost_day_list=[]
+            cookie=str(request.cookies.get('cart_items'))
+            the_list=cookie.split()
+            for i in range(len(the_list)):
+                item_list.append(int(the_list[i][0:3]))
+                quantity_list.append(int(the_list[i][4:]))
+            length=len(the_list)
+            for i in range(len(the_list)):
+                name_list.append(names[ids.index(item_list[i])])
+                cost_hour_list.append(costs_hour[ids.index(item_list[i])])
+                cost_day_list.append(costs_day[ids.index(item_list[i])])
+            return render_template("cart.html", name_list=name_list, cost_hour_list=cost_hour_list, cost_day_list=cost_day_list, quantity_list=quantity_list, length=length)
+        else:
+            return render_template("cart.html")
 
     if request.method=="POST":
         new_item=(str(request.form.get("item"))+":"+str(request.form.get("quantity"))+" ")
         if 'cart_items' in request.cookies:
-            new_cookie=str(request.cookies.get('cart_items'))+new_item
+            new_cookie=str(request.cookies.get('cart_items'))+str(new_item)
         else:
             new_cookie=str(new_item)
         response = make_response(render_template("cart.html"))
         response.set_cookie('cart_items', new_cookie)
         return response
-        return render_template("cart.html")
+        return redirect("/cart", method="GET")
 
 @app.route("/checkout")
 def checkout():
