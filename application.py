@@ -91,7 +91,7 @@ def cart():
         response = make_response(render_template("cart.html"))
         response.set_cookie('cart_items', new_cookie)
         return response
-        return redirect("/cart", method="GET")
+        return render_template("cart.html")
 
 @app.route("/checkout")
 def checkout():
