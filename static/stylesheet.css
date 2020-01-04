@@ -173,4 +173,17 @@ footer {
 
 .form-control {
   max-width: 75%;
+  margin-top: 3px;
+}
+
+label {
+  color: white;
+  font-size: 18px;
+  font-family: fresno, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 2px;
+  border-radius: 0;
+  border: none;
+  padding: 4px;
 }

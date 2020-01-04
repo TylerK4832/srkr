@@ -95,7 +95,8 @@ def cart():
                 cost_day_list.append(costs_day[ids.index(item_list[i])])
             return render_template("cart.html", name_list=name_list, cost_hour_list=cost_hour_list, cost_day_list=cost_day_list, quantity_list=quantity_list, length=length)
         else:
-            return render_template("cart.html", length=0)
+            length=0
+            return render_template("cart.html", length=length)
 
     if request.method=="POST":
         #create additional info for cookie
