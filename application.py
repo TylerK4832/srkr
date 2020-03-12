@@ -98,12 +98,12 @@ def cart():
         length=0
         return render_template("cart.html", length=length)
 
-@app.route("/createcookie", methods=["POST"])
-def createcookie():
+@app.route("/addcart", methods=["POST"])
+def addcart():
     #create additional info for cookie
     new_cookie=(request.form.get("item")+":"+request.form.get("quantity")+" ")
+    #add to cookie if cookie already exists
     if 'cart_items' in request.cookies:
-        #add to cookie if cookie already exists
         new_cookie=request.cookies.get('cart_items')+new_cookie
     #set cookie
     resp=make_response(redirect("/cart"))

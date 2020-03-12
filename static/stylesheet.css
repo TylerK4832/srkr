@@ -1,5 +1,6 @@
 .navbar-main{
-  background-color: #300c63;
+  background-color: #4b2087;
+  /*old- #300c63*/
 }
 
 .navbar-light .navbar-nav .nav-link{
@@ -22,7 +23,7 @@
 }
 
 body{
-  background-color: #300c63;
+  background-color: #4b2087;
 }
 
 .dropdown-menu {
@@ -186,4 +187,16 @@ label {
   border-radius: 0;
   border: none;
   padding: 4px;
+}
+
+.animconatiner {
+  position: relative;
+}
+
+.anim {
+  position: absolute;
+}
+
+.kayak {
+  width: 450px
 }
