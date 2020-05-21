@@ -56,13 +56,34 @@
           <li class="nav-item mx-3">
             <a class="nav-link" href="/cart">My Cart</a>
           </li>
+          <li class="nav-item">
+            <div class="container">
+                <div class="row space-evenly">
+                    <div class="col">
+                        <a href="#">
+                            <img src="/static/icons/06-facebook.svg" alt="Facebook" class="filter-purple img-fluid social-icon navbar-icon">
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a href="#">
+                            <img src="/static/icons/03-twitter.svg" alt="Twitter" class="filter-purple img-fluid social-icon navbar-icon">
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a href="#">
+                            <img src="/static/icons/38-instagram.svg" alt="Instagram" class="filter-purple img-fluid social-icon navbar-icon">
+                        </a>
+                    </div>
+                </div>
+            </div>
+          </li>
         </ul>
       </div>
     </nav>
     </nav>
 
     <!--container for main content-->
-    <main class="container">
+    <main class="container my-3">
             {% block main %}{% endblock %}
     </main>
 

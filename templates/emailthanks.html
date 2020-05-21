@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+
+{% block title %}
+    Thanks!
+{% endblock %}
+
+
+{% block main %}
+
+  <div class="card m-4">
+    <div class="card-body">
+      <h5 class="card-title">Thanks for joing our mailing list!</h5>
+      <p class="card-text">You'll start receiving our weekly updates on openings, new rentals, and other information.</p>
+    </div>
+  </div>
+
+  <h1 class="homepage-header mb-4" align="left">Browse Rentals</h1>
+  <div class="row">
+      <div class="col">
+        <a href="/rent/kayak/">
+          <img src="static/images/home/kayaksquaregrayscale.png" onmouseover="this.src='static/images/home/kayaksquarergb.png';" onmouseout="this.src='static/images/home/kayaksquaregrayscale.png';" alt="Kayaks" class="img-fluid kayak_tile">
+        </a>
+      </div>
+      <div class="col">
+        <a href="/rent/canoe/">
+          <img src="static/images/home/canoesquaregrayscale.png" onmouseover="this.src='static/images/home/canoesquarergb.png';" onmouseout="this.src='static/images/home/canoesquaregrayscale.png';" alt="Canoes" class="img-fluid kayak_tile">
+        </a>
+      </div>
+      <div class="col">
+        <a href="/rent/paddleboard/">
+          <img src="static/images/home/paddleboardsquaregrayscale.png" onmouseover="this.src='static/images/home/paddleboardsquarergb.png';" onmouseout="this.src='static/images/home/paddleboardsquaregrayscale.png';" alt="Paddleboards" class="img-fluid kayak_tile">
+        </a>
+      </div>
+  </div>
+
+{% endblock %}

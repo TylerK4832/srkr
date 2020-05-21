@@ -115,5 +115,61 @@ def addcart():
 def checkout():
     return render_template("checkout.html")
 
+#app route for checkout finalize page
+@app.route("/checkoutfinalize")
+def checkoutfinalize():
+    if 'cart_items' in request.cookies:
+        #connect to database
+        connection=sqlite3.connect("rentals.db")
+        cursor=connection.cursor()
+        cursor.execute("SELECT * FROM rentals")
+        rentals=cursor.fetchall()
+        #initialize necessary data lists
+        names=[]
+        costs_hour=[]
+        costs_day=[]
+        ids=[]
+        #add to list necessary data
+        for i in range(len(rentals)):
+            names.append(rentals[i][0])
+            costs_hour.append(rentals[i][3])
+            costs_day.append(rentals[i][4])
+            ids.append(rentals[i][5])
+        #initialize additional necessary data lists
+        item_list=[]
+        name_list=[]
+        quantity_list=[]
+        cost_hour_list=[]
+        cost_day_list=[]
+        #retrieve cookie from browser
+        cookie=str(request.cookies.get('cart_items'))
+        #dissect info in cookie
+        the_list=cookie.split()
+        for i in range(len(the_list)):
+            item_list.append(int(the_list[i][0:3]))
+            print(the_list[i][0:3])
+            quantity_list.append(int(the_list[i][4:]))
+        length=len(the_list)
+        #add to lists used for table in my cart
+        for i in range(len(the_list)):
+            name_list.append(names[ids.index(item_list[i])])
+            cost_hour_list.append(costs_hour[ids.index(item_list[i])])
+            cost_day_list.append(costs_day[ids.index(item_list[i])])
+        return render_template("checkoutfinalize.html", name_list=name_list, cost_hour_list=cost_hour_list, cost_day_list=cost_day_list, quantity_list=quantity_list, length=length)
+    else:
+        length=0
+        return render_template("checkoutfinalize.html", length=length)
+
+#app route to emailthanks page
+@app.route("/emailthanks")
+def emailthanks():
+    return render_template("emailthanks.html")
+
+#app route to checkoutthanks page
+@app.route("/checkoutthanks")
+def checkoutthanks():
+    return render_template("checkoutthanks.html")
+
+#run if main application
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=8000, debug=True)
